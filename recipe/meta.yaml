@@ -1,18 +1,18 @@
 {% set name = "versioned-hdf5" %}
-{% set version = "1.0" %}
+{% set version = "1.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/deshaw/versioned-hdf5/releases/download/v{{ version }}/{{ name }}-v{{ version }}.tar.gz
-  sha256: 903caec8fe3c35ab7af5d3178a581839ca0ed80c55dff0be2554556771382aca
+  url: https://github.com/deshaw/versioned-hdf5/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 80e6ffb73f020827e0f40af4652d1f3e974bfe6e2e18fb9c18109ffc921cfe9f
 
 build:
   noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
@@ -37,7 +37,7 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: 'Versioned HDF5 provides a versioned abstraction on top of h5py.'
+  summary: Versioned HDF5 provides a versioned abstraction on top of h5py.
 
   description: |
     Versioned HDF5 provides a versioned abstraction on top of `h5py`.
