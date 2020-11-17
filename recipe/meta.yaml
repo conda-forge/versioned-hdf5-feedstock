@@ -1,5 +1,5 @@
 {% set name = "versioned-hdf5" %}
-{% set version = "1.1" %}
+{% set version = "1.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/deshaw/versioned-hdf5/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 80e6ffb73f020827e0f40af4652d1f3e974bfe6e2e18fb9c18109ffc921cfe9f
+  sha256: d47f3efe73bc9f2d79ea69af1eea2f3ee033f90436afd13be38341404cf76474
 
 build:
   noarch: python
