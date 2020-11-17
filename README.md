@@ -5,9 +5,13 @@ Home: https://github.com/deshaw/versioned-hdf5
 
 Package license: BSD-3-Clause
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/versioned-hdf5-feedstock/blob/master/LICENSE.txt)
 
 Summary: Versioned HDF5 provides a versioned abstraction on top of h5py.
+
+Development: https://github.com/deshaw/versioned-hdf5
+
+Documentation: https://deshaw.github.io/versioned-hdf5
 
 Versioned HDF5 provides a versioned abstraction on top of `h5py`.
 This was created by the D. E. Shaw group <https://www.deshaw.com/> in conjunction
