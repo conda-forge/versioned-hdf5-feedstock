@@ -11,7 +11,9 @@ source:
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps -vv --config-settings=setup-args="${MESON_ARGS}"
+  # MESON_ARGS is only defined in osx_arm64.
+  # -Doptimization=2 is a filler for all other platforms.
+  script: {{ PYTHON }} -m pip install . --no-deps -vv --config-settings="setup-args=-Doptimization=2 ${MESON_ARGS}"
 
 requirements:
   build:
