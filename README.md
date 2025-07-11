@@ -333,6 +333,8 @@ Feedstock Maintainers
 =====================
 
 * [@asmeurer](https://github.com/asmeurer/)
+* [@crusaderky](https://github.com/crusaderky/)
 * [@melissawm](https://github.com/melissawm/)
+* [@peytondmurray](https://github.com/peytondmurray/)
 * [@scopatz](https://github.com/scopatz/)
 
