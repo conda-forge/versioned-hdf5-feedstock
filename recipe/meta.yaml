@@ -1,33 +1,58 @@
 {% set name = "versioned-hdf5" %}
-{% set version = "1.2.3" %}
+# {% set version = "2.0.2" %}
+{% set version = "2.0.3.dev22+gb083f80" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/deshaw/versioned-hdf5/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: bf8e47436bd7e37101ded69238c4020bd2987856fdfada7e8747f602d00ffb94
+  # url: https://pypi.io/packages/source/i/versioned-hdf5/versioned_hdf5-{{ version }}.tar.gz
+  # sha256: 7d220e4c124ac5ae6221dba5ff64aa144ac9087d3408923923825e7e7a213a02
+  # git_url: https://github.com/deshaw/versioned-hdf5.git
+  git_url: https://github.com/crusaderky/versioned-hdf5.git
+  git_rev: f94bd80d84b61022646b9c45844379931ea6a66e
 
 build:
-  noarch: python
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
+  build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - numpy                                  # [build_platform != target_platform]
+    - hdf5                                   # [build_platform != target_platform]
+    - zlib                                   # [build_platform != target_platform]
+    - cython                                 # [build_platform != target_platform]
+    - pkg-config                             # [build_platform != target_platform]
+    - meson-python                           # [build_platform != target_platform]
+    - make                                   # [build_platform != target_platform]
+    - {{ compiler("c") }}
+    - {{ compiler("cxx") }}
+    - {{ stdlib("c") }}
   host:
-    - python >=3.6
+    - python
+    - python-build
     - pip
-  run:
-    - python >=3.6
-    - h5py <3
-    - ndindex >=1.5
+    - setuptools-scm
     - numpy
+    # need to list hdf5 twice to get version pinning from conda_build_config
+    - hdf5
+    - zlib
+    - cython
+    - pkg-config
+    - meson-python
+    - make
+  run:
+    - python
+    - hdf5
+    - h5py >=3.8.0
+    - ndindex >=1.5.1
+    - numpy >=1.24.4
 
 test:
   imports:
     - versioned_hdf5
-    - versioned_hdf5.tests
   commands:
     - pip check
   requires:
