@@ -1,6 +1,6 @@
 {% set name = "versioned-hdf5" %}
 # {% set version = "2.0.2" %}
-{% set version = "2.0.3.dev22+gb083f80" %}
+{% set version = "2.0.3.dev22+g9afa280d" %}
 
 package:
   name: {{ name|lower }}
@@ -9,9 +9,8 @@ package:
 source:
   # url: https://pypi.io/packages/source/i/versioned-hdf5/versioned_hdf5-{{ version }}.tar.gz
   # sha256: 7d220e4c124ac5ae6221dba5ff64aa144ac9087d3408923923825e7e7a213a02
-  # git_url: https://github.com/deshaw/versioned-hdf5.git
-  git_url: https://github.com/crusaderky/versioned-hdf5.git
-  git_rev: f94bd80d84b61022646b9c45844379931ea6a66e
+  git_url: https://github.com/deshaw/versioned-hdf5.git
+  git_rev: 9afa280dae6c06a921881060e07cfa73f9678009
 
 build:
   number: 0
