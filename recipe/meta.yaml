@@ -1,33 +1,54 @@
 {% set name = "versioned-hdf5" %}
-{% set version = "1.2.3" %}
+{% set version = "2.1.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/deshaw/versioned-hdf5/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: bf8e47436bd7e37101ded69238c4020bd2987856fdfada7e8747f602d00ffb94
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/versioned_hdf5-{{ version }}.tar.gz
+  sha256: ce41418cb282c8183da6dfd0960505bf225771116f92efed4891e44a733c4269
 
 build:
-  noarch: python
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
+  build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - numpy                                  # [build_platform != target_platform]
+    - hdf5                                   # [build_platform != target_platform]
+    - zlib                                   # [build_platform != target_platform]
+    - cython                                 # [build_platform != target_platform]
+    - pkg-config                             # [build_platform != target_platform]
+    - meson-python                           # [build_platform != target_platform]
+    - make                                   # [build_platform != target_platform]
+    - {{ compiler("c") }}
+    - {{ compiler("cxx") }}
+    - {{ stdlib("c") }}
   host:
-    - python >=3.6
+    - python
+    - python-build
     - pip
-  run:
-    - python >=3.6
-    - h5py <3
-    - ndindex >=1.5
+    - setuptools-scm
     - numpy
+    # need to list hdf5 twice to get version pinning from conda_build_config
+    - hdf5
+    - zlib
+    - cython
+    - pkg-config
+    - meson-python
+    - make
+  run:
+    - python
+    - hdf5
+    - h5py >=3.8.0
+    - ndindex >=1.5.1
+    - numpy >=1.24.4
 
 test:
   imports:
     - versioned_hdf5
-    - versioned_hdf5.tests
   commands:
     - pip check
   requires:
