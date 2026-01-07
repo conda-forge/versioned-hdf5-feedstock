@@ -1,5 +1,5 @@
 {% set name = "versioned-hdf5" %}
-{% set version = "2.1.0" %}
+{% set version = "2.2.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/versioned_hdf5-{{ version }}.tar.gz
-  sha256: ce41418cb282c8183da6dfd0960505bf225771116f92efed4891e44a733c4269
+  sha256: 9166a5429d3eec62192c3daec1ad63b947ad014ae68f837071cf5847372108da
 
 build:
-  number: 2
+  number: 0
 
 requirements:
   build:
