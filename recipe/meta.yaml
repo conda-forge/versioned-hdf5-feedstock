@@ -1,13 +1,15 @@
 {% set name = "versioned-hdf5" %}
-{% set version = "2.2.1" %}
+{% set version = "2.2.2" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/versioned_hdf5-{{ version }}.tar.gz
-  sha256: 9166a5429d3eec62192c3daec1ad63b947ad014ae68f837071cf5847372108da
+  # url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/versioned_hdf5-{{ version }}.tar.gz
+  # sha256: 9166a5429d3eec62192c3daec1ad63b947ad014ae68f837071cf5847372108da
+  git_url: https://github.com/crusaderky/versioned-hdf5
+  git_rev: 38b27855790dfaabd01b9a976feb1973da38c160
 
 build:
   number: 0
@@ -24,7 +26,6 @@ requirements:
     - meson-python                           # [build_platform != target_platform]
     - make                                   # [build_platform != target_platform]
     - {{ compiler("c") }}
-    - {{ compiler("cxx") }}
     - {{ stdlib("c") }}
   host:
     - python
