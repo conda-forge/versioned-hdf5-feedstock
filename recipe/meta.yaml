@@ -26,7 +26,6 @@ requirements:
     - meson-python                           # [build_platform != target_platform]
     - make                                   # [build_platform != target_platform]
     - {{ compiler("c") }}
-    - {{ compiler("cxx") }}
     - {{ stdlib("c") }}
   host:
     - python
