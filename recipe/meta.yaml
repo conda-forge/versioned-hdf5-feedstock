@@ -22,7 +22,6 @@ requirements:
     - cython                                 # [build_platform != target_platform]
     - pkg-config                             # [build_platform != target_platform]
     - meson-python                           # [build_platform != target_platform]
-    - make                                   # [build_platform != target_platform]
     - {{ compiler("c") }}
     - {{ stdlib("c") }}
   host:
@@ -37,7 +36,6 @@ requirements:
     - cython
     - pkg-config
     - meson-python
-    - make
   run:
     - python
     - hdf5
