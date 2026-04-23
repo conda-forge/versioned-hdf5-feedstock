@@ -2,8 +2,9 @@
 set -o errexit
 set -o xtrace
 
-# Let macos-arm64 cross-compilation find hdf5
-if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
+# Let macos-arm64 cross-compilation find hdf5 1.14.
+# This hack is not needed with hdf5 >=2.1.
+if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]] && h5ls --version | grep -q "1.14"; then
   cat > $BUILD_PREFIX/lib/pkgconfig/hdf5.pc<<EOF
 prefix=$BUILD_PREFIX
 exec_prefix=\${prefix}
