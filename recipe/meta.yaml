@@ -1,5 +1,5 @@
 {% set name = "versioned-hdf5" %}
-{% set version = "2.3.1" %}
+{% set version = "2.4.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/versioned_hdf5-{{ version }}.tar.gz
-  sha256: 1b7cd7f33288007d5ae950925997ecf5834949142d775d8131dbd752615d21ab
+  sha256: 47dc3958738b407e32464984cfae349d7f570af83c5a540eaf02bdda2878e3ef
 
 build:
-  number: 1
+  number: 0
 
 requirements:
   build:
@@ -30,7 +30,8 @@ requirements:
     - pip
     - setuptools-scm
     - numpy
-    # need to list hdf5 twice to get version pinning from conda_build_config
+    # .ci_support/migrations/hdf52.yaml determines the versions of hdf5 to build
+    # against. This in turn introduces exact pins (vs. minor version) at runtime.
     - hdf5
     - zlib
     - cython
@@ -38,7 +39,10 @@ requirements:
     - meson-python
   run:
     - python
+    # Actually supported versions of hdf5 depend on what this recipe was built against
     - hdf5
+    # Actually supported versions of hdf5 are limited to those built against the same
+    # version of hdf5 as this recipe
     - h5py >=3.8.0
     - ndindex >=1.5.1
     - numpy >=1.24.4
