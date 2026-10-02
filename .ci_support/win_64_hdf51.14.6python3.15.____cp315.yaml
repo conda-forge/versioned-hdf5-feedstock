@@ -3,13 +3,13 @@ c_compiler:
 c_stdlib:
 - vs
 channel_sources:
-- conda-forge
+- conda-forge,conda-forge/label/python_rc
 channel_targets:
 - conda-forge main
 cxx_compiler:
 - vs2022
 hdf5:
-- '2'
+- 1.14.6
 numpy:
 - '2'
 pin_run_as_build:
@@ -17,7 +17,7 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.11.* *_cpython
+- 3.15.* *_cp315
 target_platform:
 - win-64
 zip_keys:
